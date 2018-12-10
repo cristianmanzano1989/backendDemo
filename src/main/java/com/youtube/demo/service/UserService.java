@@ -17,7 +17,12 @@ public interface UserService {
 	 * Recupera la lista de Usuarios
 	 * @return lista de Usuarios
 	 */
-	
 	List<User> findAll();
+	
+	/***
+	 * Elimina un usuario con el id recibido
+	 * @param id
+	 */
+	void delete(long id);
 
 }
