@@ -1,6 +1,7 @@
 package com.youtube.demo.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.youtube.demo.model.User;
 import com.youtube.demo.service.UserService;
+import com.youtube.demo.util.QueryResult;
 import com.youtube.demo.util.RestResponse;
 
 import antlr.StringUtils;
@@ -42,6 +44,11 @@ public class UserController {
 		this.userService.save(user);
 		
 		return new RestResponse(HttpStatus.OK.value(), "Operación Exitosa");
+	}
+	
+	@RequestMapping(value = "/getUsers",method = RequestMethod.GET)
+	public List<User> getUsers() {
+		return this.userService.findAll();
 	}
 	
 	private boolean validate(User user) {
